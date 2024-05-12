@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
 
 function App() {
+  const [formData, setFormData] = useState();
+  const handleChangeInput = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  const handleButtonClick = () => {
+    console.log(formData);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={{ padding: 100 }}>
+      <input
+        name="firstName"
+        style={{ display: "block", marginBottom: 2 }}
+        onChange={handleChangeInput}
+      />
+      <input
+        name="lastname"
+        style={{ display: "block", marginBottom: 2 }}
+        onChange={handleChangeInput}
+      />
+      <input
+        name="phonenumber"
+        onChange={handleChangeInput}
+        style={{ display: "block", marginBottom: 2 }}
+      />
+      <button onClick={handleButtonClick}>submit</button>
     </div>
   );
 }
