@@ -2,27 +2,24 @@ import { useState } from "react";
 import "./form-state-handler.styles.css";
 
 function FormStateHandler() {
-  const [formData, setFormData] = useState();
-  const handleChangeInput = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const [formState, setFormState] = useState();
+  const onChangeInput = (e) => {
+    setFormState({ ...formState, [e.target.name]: e.target.value });
   };
-  const handleButtonClick = () => {
-    console.log(formData);
+  const onButtonClick = () => {
+    console.log(formState);
   };
   return (
-    <div className="container" >
-      <input name="firstName" className="input" onChange={handleChangeInput} />
-      <input name="lastname" className="input" onChange={handleChangeInput} />
-      <input
-        name="email"
-        type="email"
-        className="input"
-        onChange={handleChangeInput}
-      />
-      <button onClick={handleButtonClick} className="button">
-        submit
-      </button>
-    </div>
+    <>
+      <div className="container">
+        <input name="firstname" className="input" onChange={onChangeInput} />
+        <input name="lastname" className="input" onChange={onChangeInput} />
+        <input name="email" className="input" onChange={onChangeInput} />
+        <button type="submit" className="button" onClick={onButtonClick}>
+          submit
+        </button>
+      </div>
+    </>
   );
 }
 
